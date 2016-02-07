@@ -23,16 +23,36 @@ M stands for master server support. S stands for individual game server query su
 - **S** | Mumble
 
 ## Get it
-### Dependencies
+### Docker (simple)
+GrokStat project ships Docker images containing precompiled GrokStat, runnable out-of-the-box.
+#### Install / update
+    docker pull grokstat/grokstat
+#### Run
+    docker run --rm grokstat/grokstat <json-input>
+
+NOTE: you cannot use stdin for arguments input at this time. See examples below.
+### Manual
+In addition to using docker you can compile and run manually.
+#### Dependencies
 	go get -u github.com/BurntSushi/toml github.com/jteeuwen/go-bindata/...
-### GrokStat itself
+#### GrokStat itself
 	git clone https://github.com/grokstat/grokstat.git
     cd grokstat && make build
     bin/grokstat
 
 ## Example
 ### Query servers
+	docker run --rm grokstat/grokstat '{"hosts": {"openttdm": ["master.openttd.org:3978"], "q3m": ["master3.idsoftware.com"]}}'
+
+or
+
     echo '{"hosts": {"openttdm": ["master.openttd.org:3978"], "q3m": ["master3.idsoftware.com"]}}' | bin/grokstat
+
+or
+
+	bin/grokstat '{"hosts": {"openttdm": ["master.openttd.org:3978"], "q3m": ["master3.idsoftware.com"]}}'
+
+Always mind the single quotes.
 ### Review available protocols
     echo '{"show-protocols": true}' | bin/grokstat
 
