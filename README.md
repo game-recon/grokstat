@@ -1,4 +1,6 @@
 # GrokStat
+
+[![Join the chat at https://gitter.im/grokstat/grokstat](https://badges.gitter.im/grokstat/grokstat.svg)](https://gitter.im/grokstat/grokstat?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Retrieves information about game servers. Inspired by [QStat](https://github.com/multiplay/qstat), written in Go. Yet even more simple, extensible and fast.
 
 GrokStat accepts input data as JSON via stdin. The result is displayed in JSON form as well. In order to run a simple query you need to specify protocol and array of hosts to check. Please refer to the example below for more information.
